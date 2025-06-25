@@ -1,0 +1,47 @@
+{
+  "providers": {
+    "openai": {
+      "defaultModel": "gpt-3.5-turbo",
+      "models": ["gpt-3.5-turbo", "gpt-4", "gpt-4-vision-preview"],
+      "apiKey": "YOUR_OPENAI_API_KEY",
+      "gpt4": {
+        "name": "gpt-4",
+        "maxTokens": 8000,
+        "temperature": 0.7,
+        "topP": 1,
+        "frequencyPenalty": 0,
+        "presencePenalty": 0
+      },
+      "gpt35": {
+        "name": "gpt-3.5-turbo",
+        "maxTokens": 4000,
+        "temperature": 0.7,
+        "topP": 1,
+        "frequencyPenalty": 0,
+        "presencePenalty": 0
+      }
+    },
+    "anthropic": {
+      "defaultModel": "claude-2",
+      "models": ["claude-2", "claude-instant"],
+      "apiKey": "YOUR_ANTHROPIC_API_KEY",
+      "claude": {
+        "name": "claude-2",
+        "maxTokens": 100000,
+        "temperature": 0.7,
+        "topP": 1
+      }
+    },
+    "qwen": {
+      "defaultModel": "qwen-turbo",
+      "models": ["qwen-turbo", "qwen-plus"],
+      "apiKey": "YOUR_QWEN_API_KEY",
+      "qwen7b": {
+        "name": "qwen-7b-chat",
+        "maxTokens": 2000,
+        "temperature": 0.7,
+        "topP": 1
+      }
+    }
+  }
+} 

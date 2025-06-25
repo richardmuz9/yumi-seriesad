@@ -1,0 +1,265 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String    @id @default(uuid())
+  email           String    @unique
+  username        String    @unique
+  passwordHash    String
+  tokensRemaining Int       @default(0)
+  role            String    @default("user")
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  transactions    TokenTransaction[]
+  billing             UserBilling?
+  preferences         UserPreferences?
+  analytics           AIUsageAnalytics[]
+  contentAnalyses     ContentAnalysis[]
+  equations           Equation[]
+  figures             Figure[]
+  citations           Citation[]
+  testSubmissions     TestSubmission[]
+  imageGenUsage       ImageGenUsage[]
+  paymentSessions     PaymentSession[]
+  artworkContributions ArtworkContribution[]
+  contributionRewards ContributionReward[]
+}
+
+model UserBilling {
+  id                  String    @id @default(cuid())
+  userId              String    @unique
+  user                User      @relation(fields: [userId], references: [id])
+  subscriptionStatus  String    @default("free")
+  availableTokens     Int       @default(10000)
+  tokenSource         String    @default("free_monthly")
+  lastTokenResetDate  DateTime  @default(now())
+  stripeCustomerId    String?
+  hasAccessToImageGen Boolean   @default(false)
+  totalAmountSpent    Float     @default(0)
+  totalTokensUsedJson String    // { openai: number, claude: number, qwen: number }
+  freeTokensRemainingJson String // { openai: number, claude: number, qwen: number }
+  contributionRewards Int       @default(0) // Total timeshards earned from contributions
+  artworkContributions Int      @default(0) // Number of approved contributions
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([userId])
+}
+
+model UserPreferences {
+  id                String    @id @default(cuid())
+  userId            String    @unique
+  user              User      @relation(fields: [userId], references: [id])
+  language          String    @default("en")
+  theme             String    @default("light")
+  writingStyle      String    @default("professional")
+  seoPreferencesJson String   // { keywords: string[], targetReadingLevel: string, etc }
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([userId])
+}
+
+model AIUsageAnalytics {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  model           String
+  tokensUsed      Int
+  requestType     String
+  status          String
+  errorMessage    String?
+  metadataJson    String?   // Additional context about the request
+  createdAt       DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model ContentAnalysis {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  content         String    // Removed @db.Text
+  readability     Float?
+  sentiment       String?
+  keywordsJson    String    // JSON array of keywords
+  suggestionsJson String?   // JSON object with suggestions
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId])
+}
+
+model TestPrompt {
+  id                  String    @id @default(cuid())
+  type                String    // 'writing', 'reading', 'listening'
+  instructions        String
+  readingPassage     String?
+  listeningTranscript String?
+  question           String
+  timeLimit          Int
+  wordLimit          Int
+  sampleAnswer       String?
+  rubric             String
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  submissions        TestSubmission[]
+}
+
+model TestSubmission {
+  id             String    @id @default(cuid())
+  userId         String
+  promptId       String
+  prompt         TestPrompt @relation(fields: [promptId], references: [id])
+  essay          String
+  overallScore   Float
+  feedbackReportJson String // JSON object with feedback
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  user           User      @relation(fields: [userId], references: [id])
+
+  @@index([promptId])
+  @@index([userId])
+}
+
+model Citation {
+  id              String    @id @default(cuid())
+  userId          String
+  type            String    // 'article', 'book', 'conference', 'website', 'other'
+  title           String
+  authorsJson     String    // JSON array of authors
+  year            Int
+  source          String    // Source name/publisher
+  doi             String?
+  url             String?
+  citationStyle   String    @default("apa")
+  bibtex          String    // BibTeX format
+  inTextCitation  String    // In-text citation format
+  bibliography    String    // Full bibliography entry
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  user            User      @relation(fields: [userId], references: [id])
+
+  @@unique([id, userId])
+  @@index([userId])
+}
+
+model Equation {
+  id          String   @id @default(cuid())
+  userId      String
+  latex       String
+  displayMode Boolean  @default(true)
+  description String?
+  number      Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@unique([id, userId])
+  @@index([userId])
+}
+
+model Figure {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String   // 'chart', 'image', etc.
+  title       String
+  caption     String?
+  source      String?  // URL or file path
+  dataJson    String?  // For charts: data points as JSON string
+  configJson  String?  // For charts: chart configuration as JSON string
+  format      String   // File format: 'png', 'svg', etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@unique([id, userId])
+  @@index([userId])
+}
+
+model ImageGenUsage {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // 'free_trial' or 'paid'
+  prompt    String
+  theme     String?
+  timestamp DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model PaymentSession {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  packageId   String?
+  planId      String?
+  amount      Float
+  currency    String    @default("USD")
+  status      String    @default("pending")
+  provider    String    // 'stripe' or 'alipay'
+  sessionId   String    // External payment provider's session ID
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([sessionId])
+}
+
+model ArtworkContribution {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  filename      String    // Stored filename
+  originalName  String    // Original upload filename
+  fileSize      Int       // File size in bytes
+  mimeType      String    // MIME type (image/png, etc.)
+  status        String    @default("pending") // 'pending', 'approved', 'rejected'
+  rewardClaimed Boolean   @default(false)
+  rewardAmount  Int       // Timeshards to be awarded
+  submittedAt   DateTime  @default(now())
+  reviewedAt    DateTime?
+  reviewedBy    String?   // Admin/reviewer user ID
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  rewards       ContributionReward[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model ContributionReward {
+  id                String    @id @default(cuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  contributionId    String
+  contribution      ArtworkContribution @relation(fields: [contributionId], references: [id])
+  timeshardsAwarded Int       // Amount of timeshards awarded
+  awardedAt         DateTime  @default(now())
+  reason            String    // Description of why reward was given
+  createdAt         DateTime  @default(now())
+
+  @@index([userId])
+  @@index([contributionId])
+}
+
+model TokenTransaction {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  type            String   // 'purchase', 'usage', 'bonus'
+  amount          Int
+  model           String?
+  description     String
+  stripePaymentId String?
+  createdAt       DateTime @default(now())
+
+  @@index([userId])
+} 

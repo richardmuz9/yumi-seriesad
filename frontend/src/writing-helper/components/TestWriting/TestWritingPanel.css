@@ -1,0 +1,97 @@
+.test-writing-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.test-writing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.test-writing-header select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.test-writing-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.test-writing-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+.submit-button {
+  align-self: flex-end;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-button:hover {
+  background: var(--primary-color-dark);
+}
+
+.submit-button:disabled {
+  background: var(--disabled-color);
+  cursor: not-allowed;
+}
+
+/* Timer styles */
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.timer-green {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.timer-yellow {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.timer-red {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .test-writing-content {
+    flex-direction: column;
+  }
+
+  .test-writing-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+} 

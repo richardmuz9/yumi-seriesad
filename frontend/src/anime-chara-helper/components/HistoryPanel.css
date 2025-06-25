@@ -1,0 +1,78 @@
+.history-panel {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.history-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.history-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.undo-btn,
+.redo-btn {
+  background: none;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #6c757d;
+  transition: all 0.2s;
+}
+
+.undo-btn:hover,
+.redo-btn:hover {
+  background: #f8f9fa;
+  color: #343a40;
+}
+
+.undo-btn:disabled,
+.redo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: #f8f9fa;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background: #e9ecef;
+}
+
+.history-action {
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.history-time {
+  font-size: 0.8rem;
+  color: #6c757d;
+} 

@@ -1,0 +1,41 @@
+{
+  "system": {
+    "default": "You are a helpful AI assistant.",
+    "writing": "You are a professional writing assistant with expertise in various writing styles and formats.",
+    "anime": "You are an anime character creation expert with deep knowledge of anime tropes and styles.",
+    "research": "You are a research assistant with expertise in academic writing and citation formats."
+  },
+  "roles": {
+    "user": "A user seeking assistance",
+    "assistant": "A helpful AI assistant",
+    "system": "The system providing context and instructions"
+  },
+  "templates": {
+    "social-media": {
+      "base": "Create engaging social media content that resonates with the target audience.",
+      "platforms": {
+        "twitter": "Create a tweet that is concise and impactful.",
+        "instagram": "Create an engaging caption that complements visual content.",
+        "linkedin": "Create professional content that showcases expertise."
+      }
+    },
+    "blog-article": {
+      "base": "Write a well-structured blog article with clear sections and engaging content.",
+      "sections": ["introduction", "main points", "conclusion"]
+    },
+    "creative-writing": {
+      "base": "Create imaginative and engaging creative content.",
+      "styles": ["narrative", "descriptive", "dialogue"]
+    },
+    "writing": {
+      "analyze": "Analyze the following text for {aspect}:\n\n{text}",
+      "improve": "Improve the following text focusing on {aspect}:\n\n{text}",
+      "generate": "Generate {type} content about {topic} in {style} style"
+    },
+    "research": {
+      "cite": "Format the following citation in {style} style:\n\n{citation}",
+      "search": "Search for academic sources about {topic}",
+      "summarize": "Summarize the following research paper:\n\n{text}"
+    }
+  }
+} 

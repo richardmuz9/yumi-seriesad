@@ -1,0 +1,36 @@
+{
+  "templates": {
+    "blog": {
+      "standard": {
+        "title": "Title",
+        "subtitle": "Subtitle (optional)",
+        "content": "Main content",
+        "tags": ["tag1", "tag2"],
+        "featuredImage": "image.jpg"
+      },
+      "tutorial": {
+        "title": "How to...",
+        "prerequisites": "What you need",
+        "steps": ["Step 1", "Step 2"],
+        "conclusion": "Summary"
+      }
+    },
+    "social": {
+      "twitter": {
+        "maxLength": 280,
+        "formats": ["text", "image", "video"],
+        "hashtags": true
+      },
+      "instagram": {
+        "caption": "Caption text",
+        "media": ["image", "video"],
+        "hashtags": true
+      },
+      "facebook": {
+        "text": "Post content",
+        "media": ["image", "video", "link"],
+        "privacy": ["public", "friends", "private"]
+      }
+    }
+  }
+} 

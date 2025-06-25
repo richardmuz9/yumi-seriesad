@@ -1,0 +1,59 @@
+{
+  "defaults": {
+    "theme": "light",
+    "language": "en",
+    "timezone": "UTC",
+    "notifications": {
+      "email": true,
+      "push": false,
+      "frequency": "daily"
+    },
+    "privacy": {
+      "profileVisibility": "public",
+      "activityTracking": true,
+      "dataSharing": false
+    },
+    "writing": {
+      "defaultStyle": "formal",
+      "citationFormat": "APA",
+      "autoSave": true,
+      "spellCheck": true
+    },
+    "display": {
+      "fontSize": "medium",
+      "fontFamily": "Arial",
+      "colorScheme": "default"
+    }
+  },
+  "templates": {
+    "social": {
+      "twitter": {
+        "includeHashtags": true,
+        "defaultHashtags": ["#AI", "#Content"],
+        "threadMode": false
+      },
+      "instagram": {
+        "includeEmoji": true,
+        "defaultEmoji": ["✨", "🎯", "💡"],
+        "includeHashtags": true
+      },
+      "linkedin": {
+        "includeCallToAction": true,
+        "defaultCTA": "Thoughts?",
+        "professionalTone": true
+      }
+    },
+    "blog": {
+      "includeTableOfContents": true,
+      "includeFeaturedImage": true,
+      "defaultCategories": ["Technology", "AI", "Writing"],
+      "seoOptimized": true
+    }
+  },
+  "accessibility": {
+    "highContrast": false,
+    "largeText": false,
+    "screenReader": false,
+    "reducedMotion": false
+  }
+} 

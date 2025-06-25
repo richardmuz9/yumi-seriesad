@@ -1,0 +1,54 @@
+.test-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 4px 4px 0 0;
+}
+
+.word-count {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.editor-textarea {
+  width: 100%;
+  min-height: 400px;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.editor-textarea:focus {
+  outline: none;
+  border-color: #228be6;
+  box-shadow: 0 0 0 2px rgba(34, 139, 230, 0.1);
+}
+
+.editor-textarea:disabled {
+  background: #f8f9fa;
+  cursor: not-allowed;
+}
+
+.editor-textarea.over-limit {
+  border-color: #e03131;
+}
+
+.word-limit-warning {
+  color: #e03131;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  background: #fff5f5;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+} 

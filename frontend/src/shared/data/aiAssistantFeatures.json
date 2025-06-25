@@ -1,0 +1,157 @@
+{
+  "aiFeatures": [
+    {
+      "id": "character-library",
+      "name": "Character Library",
+      "description": "Save and organize your anime characters with drag-and-drop management",
+      "category": "creation",
+      "version": "1.2",
+      "isNew": true,
+      "examples": [
+        "Save character: \"Magical Girl Sakura\" with cherry blossom theme",
+        "Organize characters by series or mood",
+        "Quick load previous character designs"
+      ],
+      "tips": [
+        "Use descriptive names for easy searching",
+        "Add tags for better organization",
+        "Auto-generated thumbnails help identify characters quickly"
+      ]
+    },
+    {
+      "id": "ai-color-assistant",
+      "name": "AI Color Assistant",
+      "description": "Analyze images and get smart color suggestions with natural language",
+      "category": "creation",
+      "version": "1.2",
+      "isNew": true,
+      "examples": [
+        "\"Make it more sunset-like\" → warm orange/pink palette",
+        "\"Ocean vibes\" → cool blue/teal suggestions",
+        "Upload reference image for instant color extraction"
+      ],
+      "tips": [
+        "Try describing moods instead of exact colors",
+        "Upload multiple references for varied palettes",
+        "AI learns from your color preferences over time"
+      ]
+    },
+    {
+      "id": "smart-brush-system",
+      "name": "Smart Brush System",
+      "description": "Intelligent brushes with auto-fill and pattern recognition",
+      "category": "creation",
+      "version": "1.2",
+      "isNew": true,
+      "examples": [
+        "Auto-detect skin areas for consistent coloring",
+        "Pattern brush for repetitive elements like scales or feathers",
+        "Edge-aware fills that respect line art boundaries"
+      ],
+      "tips": [
+        "Adjust sensitivity for different art styles",
+        "Use preserve details for intricate line work",
+        "Blend strength affects color transitions"
+      ]
+    },
+    {
+      "id": "creative-control-system",
+      "name": "Creative Control Levels",
+      "description": "Choose how much creative freedom to give AI - from precise to freestyle",
+      "category": "system",
+      "version": "1.2",
+      "isNew": true,
+      "examples": [
+        "🎯 Precise: \"Follow my instructions exactly\"",
+        "🎨 Balanced: \"Good results with smart suggestions\"",
+        "🎲 Freestyle: \"Surprise me with creativity\""
+      ],
+      "tips": [
+        "Try different levels for different projects",
+        "Balanced mode adapts to your style over time",
+        "Freestyle mode works great for inspiration"
+      ]
+    }
+  ],
+  "yumiChatResponses": {
+    "otaku": {
+      "greeting": [
+        "Konnichiwa! Ready to create some amazing anime art? ✨",
+        "Ohayo! I see you're exploring the new v1.2 features! Sugoi! 🎌",
+        "Hey there, fellow otaku! Let's make something kawaii together! 💖"
+      ],
+      "helpOffers": [
+        "Want me to show you the new Character Library? It's perfect for organizing your waifus! 📚",
+        "The Smart Brush System is incredible for anime-style coloring! Want a demo? 🎨",
+        "I can help you master the new drawing tools - especially that fine-liner for perfect eyelashes! ✨"
+      ],
+      "surprises": [
+        "Did you know you can say \"make it more shoujo-like\" and the AI understands? Magic! ✨",
+        "Secret: The Fine-liner brush goes down to 0.1px - perfect for manga details! 🖊️",
+        "Easter egg: Try \"Studio Ghibli vibes\" in the AI Color Assistant! 🏞️"
+      ]
+    },
+    "teacher": {
+      "greeting": [
+        "Welcome back! I notice you're exploring our new v1.2 capabilities. Excellent! 📚",
+        "Good day! Ready to learn about the enhanced creative tools? Let's begin! 👩‍🏫"
+      ],
+      "helpOffers": [
+        "Shall we start with the Creative Control Levels? They're quite educational! 🎯",
+        "The Academic Report Enhancements might interest you - very structured approach! 📊"
+      ],
+      "surprises": [
+        "Advanced tip: The AI learns your patterns and suggests improvements! 🧠",
+        "Did you know? Each drawing tool has educational tooltips when you hover! 💡"
+      ]
+    },
+    "genki": {
+      "greeting": [
+        "YAY! You're here! The new v1.2 features are SO EXCITING! ⚡",
+        "OMG hi hi! Ready to have FUN with all the amazing new tools?! 🎉"
+      ],
+      "helpOffers": [
+        "Wanna see the COOLEST feature? The AI Color Assistant is AMAZING! 🌈",
+        "OH OH! Let me show you how to make SUPER detailed eyelashes! ✨"
+      ],
+      "surprises": [
+        "SURPRISE! You can drag characters between different projects! Mind = BLOWN! 🤯",
+        "COOL DISCOVERY: The system remembers what makes you excited and suggests more! 🎯"
+      ]
+    }
+  },
+  "faqItems": [
+    {
+      "id": "what-is-v12",
+      "question": "What's new in Yumi-Series v1.2?",
+      "answer": "v1.2 introduces the Creative Control System with personality-guided AI, enhanced drawing tools (14 specialized brushes), Character Library, AI Color Assistant, Smart Brush System, and intelligent version management. The biggest innovation is choosing how much creative control to give the AI!",
+      "category": "general",
+      "version": "1.2",
+      "isNew": true
+    },
+    {
+      "id": "creative-control-levels",
+      "question": "What are Creative Control Levels?",
+      "answer": "You can choose how much creative freedom to give the AI: 🎯 Precise (follow instructions exactly), 🎨 Balanced (good results with smart questions), or 🎲 Freestyle (surprise me with creativity). Each level changes how the AI collaborates with you!",
+      "category": "features",
+      "version": "1.2",
+      "isNew": true
+    },
+    {
+      "id": "character-library-usage",
+      "question": "How do I use the Character Library?",
+      "answer": "Save your characters with the Character Library tool in Creation Mode. Auto-generated thumbnails make them easy to find, and you can drag-and-drop to organize by series, mood, or any system you prefer. Perfect for building your anime universe!",
+      "category": "creation",
+      "version": "1.2",
+      "isNew": true
+    },
+    {
+      "id": "ai-color-magic",
+      "question": "How does the AI Color Assistant work?",
+      "answer": "Instead of picking exact colors, describe the mood! Try \"sunset vibes\", \"ocean depths\", or \"magical forest\". Upload reference images for instant color extraction, or let the AI analyze your artwork and suggest harmonious palettes.",
+      "category": "creation",
+      "version": "1.2",
+      "isNew": true
+    }
+  ]
+} 

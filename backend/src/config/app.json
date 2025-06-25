@@ -1,0 +1,61 @@
+{
+  "app": {
+    "name": "Yumi Series",
+    "version": "1.0.0",
+    "environment": "production",
+    "port": 3000,
+    "host": "localhost",
+    "cors": {
+      "origins": [
+        "https://yumi77965.online",
+        "http://localhost:3000",
+        "http://localhost:5173"
+      ],
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      "allowedHeaders": ["Content-Type", "Authorization"]
+    }
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "database.sqlite"
+  },
+  "auth": {
+    "jwtSecret": "YOUR_JWT_SECRET",
+    "tokenExpiration": "24h",
+    "saltRounds": 10
+  },
+  "api": {
+    "baseUrl": "https://yumi-series-production.up.railway.app",
+    "timeout": 30000,
+    "retries": 3
+  },
+  "server": {
+    "port": 3001,
+    "host": "localhost",
+    "cors": {
+      "origin": ["http://localhost:3000"],
+      "credentials": true
+    }
+  },
+  "defaults": {
+    "provider": "qwen",
+    "model": "qwen-turbo"
+  },
+  "chat": {
+    "maxTokens": 2000,
+    "temperature": 0.7
+  },
+  "uploads": {
+    "maxFileSize": 10485760,
+    "allowedTypes": ["image/jpeg", "image/png", "image/gif", "audio/mpeg", "audio/wav"]
+  },
+  "billing": {
+    "freeTier": {
+      "monthlyTokens": 10000,
+      "resetDay": 1
+    },
+    "premium": {
+      "dailyTokens": 30000
+    }
+  }
+} 

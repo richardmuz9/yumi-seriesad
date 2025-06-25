@@ -1,0 +1,101 @@
+{
+  "blocks": {
+    "text": {
+      "paragraph": {
+        "type": "text",
+        "style": "normal",
+        "alignment": "left"
+      },
+      "heading": {
+        "type": "text",
+        "style": "heading",
+        "levels": [1, 2, 3, 4, 5, 6]
+      },
+      "quote": {
+        "type": "text",
+        "style": "quote",
+        "alignment": "left"
+      }
+    },
+    "media": {
+      "image": {
+        "type": "media",
+        "formats": ["jpg", "png", "gif"],
+        "maxSize": 5242880
+      },
+      "video": {
+        "type": "media",
+        "formats": ["mp4", "webm"],
+        "maxSize": 52428800
+      }
+    },
+    "code": {
+      "snippet": {
+        "type": "code",
+        "languages": ["javascript", "python", "java", "cpp"]
+      }
+    },
+    "math": {
+      "equation": {
+        "type": "math",
+        "formats": ["latex", "mathml"]
+      }
+    }
+  },
+  "introduction": {
+    "blog": {
+      "template": "Start with a hook about {topic}, then provide context and state the main purpose.",
+      "examples": [
+        "Did you know that {topic} affects millions of people every day?",
+        "The world of {topic} is constantly evolving.",
+        "Understanding {topic} is crucial for success in today's world."
+      ]
+    },
+    "research": {
+      "template": "Begin with background information about {topic}, state the research question, and outline objectives.",
+      "examples": [
+        "Recent advances in {topic} have raised important questions.",
+        "This study investigates the relationship between {variables}.",
+        "The purpose of this research is to examine {topic}."
+      ]
+    }
+  },
+  "mainBody": {
+    "blog": {
+      "template": "Organize content into clear sections about {topic}, use subheadings, and include examples.",
+      "sections": [
+        "Key Points",
+        "Examples and Case Studies",
+        "Tips and Best Practices",
+        "Common Challenges"
+      ]
+    },
+    "research": {
+      "template": "Present methodology, results, and analysis of {topic} research.",
+      "sections": [
+        "Literature Review",
+        "Methodology",
+        "Results",
+        "Discussion"
+      ]
+    }
+  },
+  "conclusion": {
+    "blog": {
+      "template": "Summarize key points about {topic} and provide actionable takeaways.",
+      "examples": [
+        "Now you have the tools to master {topic}.",
+        "Start implementing these {topic} strategies today.",
+        "Remember these key points about {topic}."
+      ]
+    },
+    "research": {
+      "template": "Summarize findings, discuss implications, and suggest future research directions for {topic}.",
+      "examples": [
+        "This study demonstrates the importance of {topic}.",
+        "Future research should explore {related_aspects}.",
+        "These findings contribute to our understanding of {topic}."
+      ]
+    }
+  }
+} 

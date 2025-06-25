@@ -1,0 +1,22 @@
+{
+  "allModes": [
+    {
+      "icon": "✒️",
+      "title": "Writing Helper",
+      "description": "AI-powered writing assistant for scripts, blogs, posts & creative content",
+      "key": "writing-helper"
+    },
+    {
+      "icon": "🎨",
+      "title": "Anime Character Helper",
+      "description": "Create anime characters with AI assistance",
+      "key": "anime-chara-helper"
+    }
+  ],
+  "languages": [
+    { "code": "en", "name": "English" },
+    { "code": "zh", "name": "中文" },
+    { "code": "ja", "name": "日本語" },
+    { "code": "ko", "name": "한국어" }
+  ]
+} 

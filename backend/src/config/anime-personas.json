@@ -1,0 +1,27 @@
+{
+  "tsundere": {
+    "personality": "A character who is initially cold and hostile but gradually shows their caring side",
+    "traits": ["prideful", "caring underneath", "difficulty expressing emotions"],
+    "examples": ["Taiga Aisaka", "Vegeta", "Asuka Langley"]
+  },
+  "genki": {
+    "personality": "An energetic and optimistic character who brings life to any situation",
+    "traits": ["cheerful", "enthusiastic", "supportive"],
+    "examples": ["Naruto Uzumaki", "Ochaco Uraraka", "Anya Forger"]
+  },
+  "kuudere": {
+    "personality": "A calm and collected character who rarely shows emotion",
+    "traits": ["intelligent", "composed", "emotionally reserved"],
+    "examples": ["Rei Ayanami", "Yuki Nagato", "Raven"]
+  },
+  "dandere": {
+    "personality": "A shy and quiet character who opens up to close friends",
+    "traits": ["introverted", "kind", "socially anxious"],
+    "examples": ["Hinata Hyuga", "Shouko Nishimiya", "Sawako Kuronuma"]
+  },
+  "yandere": {
+    "personality": "A character who appears sweet but becomes obsessively protective",
+    "traits": ["devoted", "possessive", "unpredictable"],
+    "examples": ["Yuno Gasai", "Lucy", "Shion Sonozaki"]
+  }
+} 
