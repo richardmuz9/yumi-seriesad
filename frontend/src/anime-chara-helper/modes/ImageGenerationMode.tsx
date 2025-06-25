@@ -270,7 +270,7 @@ export const ImageGenerationMode: React.FC<ImageGenerationModeProps> = ({
             <Button 
               variant="contained" 
               color="primary" 
-              onClick={() => alert('Premium access is currently unavailable.')}
+              onClick={() => navigate('/charge')}
               fullWidth
               sx={{ mb: 2 }}
             >
