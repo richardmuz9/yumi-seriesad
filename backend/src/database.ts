@@ -2,8 +2,10 @@ import { PrismaClient } from '@prisma/client'
 import { v4 as uuidv4 } from 'uuid'
 import { TokenTransaction } from './types'
 
-// Initialize Prisma client
-export const prisma = new PrismaClient()
+// Initialize Prisma client with logging in development
+export const prisma = new PrismaClient({
+  log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error']
+})
 
 // Database interface
 export interface User {
@@ -88,18 +90,36 @@ export interface ContributionReward {
 
 export class Database {
   private prisma: PrismaClient
+  private retryCount: number = 0
+  private maxRetries: number = 3
+  private retryDelay: number = 5000 // 5 seconds
 
   constructor() {
     this.prisma = prisma
   }
 
   async initialize() {
-    try {
-      await this.prisma.$connect()
-      console.log('✅ Database connected successfully')
-    } catch (error) {
-      console.error('❌ Database connection error:', error)
-      throw error
+    while (this.retryCount < this.maxRetries) {
+      try {
+        await this.prisma.$connect()
+        console.log('✅ Database connected successfully')
+        
+        // Reset retry count on successful connection
+        this.retryCount = 0
+        return
+      } catch (error) {
+        console.error(`❌ Database connection error:`, error)
+        
+        this.retryCount++
+        if (this.retryCount < this.maxRetries) {
+          console.log(`⏳ Retrying in ${this.retryDelay/1000} seconds...`)
+          console.log(`📊 Database connection attempt ${this.retryCount + 1}/${this.maxRetries}...`)
+          await new Promise(resolve => setTimeout(resolve, this.retryDelay))
+        } else {
+          console.error('❌ Max retries reached. Could not connect to database.')
+          throw error
+        }
+      }
     }
   }
 
