@@ -32,5 +32,4 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           cd backend
-          railway link pleasant-flow
           railway up 
