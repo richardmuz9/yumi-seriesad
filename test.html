@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: red;
+            border-color: red;
+        }
+        .success {
+            color: green;
+            border-color: green;
+        }
+        .auth-buttons {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Test Page</h1>
+    
+    <div class="form-group">
+        <button onclick="testHealth()">Test Health</button>
+    </div>
+
+    <div class="form-group">
+        <h2>Authentication</h2>
+        <label for="email">Email:</label>
+        <input type="email" id="email" value="test@example.com">
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" value="testuser">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" value="testpassword123">
+        
+        <div class="auth-buttons">
+            <button onclick="testRegister()">Register</button>
+            <button onclick="testLogin()">Login</button>
+        </div>
+    </div>
+
+    <div id="response"></div>
+
+    <script>
+        const API_BASE = 'http://localhost:3001/api';
+        const responseDiv = document.getElementById('response');
+
+        function displayResponse(data, isError = false) {
+            responseDiv.className = isError ? 'error' : 'success';
+            if (typeof data === 'object') {
+                responseDiv.textContent = JSON.stringify(data, null, 2);
+            } else {
+                responseDiv.textContent = data.toString();
+            }
+        }
+
+        async function makeRequest(url, method = 'GET', data = null) {
+            const options = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: 'include'
+            };
+
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(url, options);
+                const contentType = response.headers.get('content-type');
+                
+                if (contentType && contentType.includes('application/json')) {
+                    const jsonResponse = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(jsonResponse.error || 'Request failed');
+                    }
+                    
+                    return jsonResponse;
+                } else {
+                    if (!response.ok) {
+                        throw new Error('Request failed');
+                    }
+                    return await response.text();
+                }
+            } catch (error) {
+                displayError(`Request error: ${error.message}`);
+                throw error;
+            }
+        }
+
+        function displayError(message) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = `<div style="color: red; padding: 10px; border: 1px solid red; border-radius: 4px; margin-top: 10px;">${message}</div>`;
+        }
+
+        function displaySuccess(data) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = `<div style="color: green; padding: 10px; border: 1px solid green; border-radius: 4px; margin-top: 10px;">
+                <strong>Success!</strong><br>
+                <pre style="background: #f5f5f5; padding: 10px; margin-top: 10px;">${JSON.stringify(data, null, 2)}</pre>
+            </div>`;
+        }
+
+        async function testHealth() {
+            try {
+                const data = await makeRequest('http://localhost:3001/api/health');
+                displaySuccess(data);
+            } catch (error) {
+                // Error is already displayed by makeRequest
+            }
+        }
+
+        async function testRegister() {
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !username || !password) {
+                displayError('Please fill in all fields');
+                return;
+            }
+
+            try {
+                const data = await makeRequest('http://localhost:3001/api/auth/register', 'POST', {
+                    email,
+                    username,
+                    password
+                });
+                displaySuccess(data);
+            } catch (error) {
+                // Error is already displayed by makeRequest
+            }
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                displayError('Please fill in email and password');
+                return;
+            }
+
+            try {
+                const data = await makeRequest('http://localhost:3001/api/auth/login', 'POST', {
+                    email,
+                    password
+                });
+                displaySuccess(data);
+            } catch (error) {
+                // Error is already displayed by makeRequest
+            }
+        }
+
+        // Test health endpoint on page load
+        testHealth();
+    </script>
+</body>
+</html> 
